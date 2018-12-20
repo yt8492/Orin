@@ -48,13 +48,13 @@ class OrinSurfaceView(context: Context) : SurfaceView(context), SurfaceHolder.Ca
     override fun onTouchEvent(event: MotionEvent?): Boolean {
         when (event?.action) {
             MotionEvent.ACTION_DOWN -> {
+                soundPool.play(bgm, 1f, 1f, 1, 0, 1f)
                 val canvas = mHolder.lockCanvas()
                 val scale = min(width.toFloat() / bou.width, height.toFloat() / bou.height)
                 canvas.scale(scale, scale)
                 canvas.drawColor(Color.WHITE)
                 canvas.drawBitmap(bou, 0f, 0f, null)
                 mHolder.unlockCanvasAndPost(canvas)
-                soundPool.play(bgm, 1f, 1f, 1, 0, 1f)
             }
             MotionEvent.ACTION_UP -> {
                 val canvas = mHolder.lockCanvas()
